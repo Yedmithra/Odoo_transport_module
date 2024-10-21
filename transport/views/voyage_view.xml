@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!-- vue liste -->
+<record id="voyage_list_view" model="ir.ui.view">
+    <field name="name">car.voyage.list</field>
+    <field name="model">car.voyage</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="voiture_id"/>
+            <field name="lieu_depart"/>
+            <field name="destination"/>
+            <field name="date_depart"/>
+            <field name="date_arrivee"/>
+            <field name="duree_voyage"/>
+            <field name="nombre_de_place"/>
+        </tree>
+    </field>
+</record>
+
+<!-- vue formulaire -->
+<record id="voyage_list_form" model="ir.ui.view">
+    <field name="name">car.voyage.form</field>
+    <field name="model">car.voyage</field>
+    <field name="arch" type="xml">
+        <form>
+
+            <group>
+            <field name="voiture_id"/>
+            <field name="lieu_depart"/>
+            <field name="destination"/>
+            <field name="date_depart"/>
+            <field name="date_arrivee"/>
+            <field name="duree_voyage"/>
+            <field name="nombre_de_place"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+
+<!-- vue kanban -->
+<record id="voyage_list_kanban" model="ir.ui.view">
+    <field name="name">car.voyage.kanban</field>
+    <field name="model">car.voyage</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <div class="oe_kanban_image">
+                            <field name="voiture_id"/>
+                        </div>
+                        <div class="oe_kanban_details" style="margin: 10px;">
+                            <div class="oe_kanban_title" style="margin-bottom: 5px;">
+                                <p>lieu de depart :
+                                <field name="lieu_depart"/>
+                                </p>
+                                <p>destination :
+                                <field name="destination"/>
+                                </p>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <p>date de depart :
+                                <field name="date_depart"/>
+                                </p>
+                                <p>date d'arrivée :
+                                <field name="date_arrivee"/>
+
+                                 </p>
+                                <p>durée du voyage :
+                                <field name="duree_voyage"/>
+                                 </p>
+                                <p>nombre de place :
+                                <field name="nombre_de_place"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+<record id="action_voyage" model="ir.actions.act_window" >
+    <field name="name">Menu voyage </field>
+    <field name="res_model">car.voyage</field>
+    <field name="view_mode">tree,form,kanban</field>
+</record>
+<menuitem id="menu_voyage" name="voyage" action="action_voyage" parent="menu_transport" />
+
+</odoo>

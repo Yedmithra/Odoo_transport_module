@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ticket,ticket,model_car_ticket,base.group_user,1,1,1,1
+access_voiture,voiture,model_car_car,base.group_user,1,1,1,1
+access_voyage,voyage,model_car_voyage,base.group_user,1,1,1,1
+access_change_chauff,change_chauffeur,model_change_chauffeur,base.group_user,1,1,1,1

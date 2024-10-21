@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!-- vue liste -->
+<record id="ticket_view_list" model="ir.ui.view">
+    <field name="name">car.ticket.list</field>
+    <field name="model">car.ticket</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="nom_du_client"/>
+            <field name="date"/>
+            <field name="montant"/>
+            <field name="destination"/>
+            <field name="model_voiture_id"/>
+            <field name="heure_depart"/>
+        </tree>
+    </field>
+</record>
+
+<!-- vue formulaire -->
+<record id="ticket_view_form" model="ir.ui.view">
+    <field name="name">car.ticket.form</field>
+    <field name="model">car.ticket</field>
+    <field name="arch" type="xml">
+        <form>
+            <group>
+                <field name="nom_du_client"/>
+                <field name="date"/>
+                <field name="montant"/>
+                <field name="destination"/>
+                <field name="model_voiture_id"/>
+                <field name="heure_depart"/>
+            </group>
+        </form>
+    </field>
+</record>
+    <!-- vue kanban -->
+<record id="ticket_view_kanban" model="ir.ui.view">
+    <field name="name">car.ticket.kanban</field>
+    <field name="model">car.ticket</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <template>
+                <t t-name="kanban-box">
+                    <div>
+                        <p>nom du client :
+                        <field name="nom_du_client"/>
+                        </p>
+                        <p>date :
+                        <field name="date"/>
+                        </p>
+                        <p>montant :
+                        <field name="montant"/>
+                         </p>
+                        <p>destination :
+                        <field name="destination"/>
+                        </p>
+                        <p>model de voiture :
+                        <field name="model_voiture_id"/>
+                        </p>
+                        <p>heure de depart :
+                        <field name="heure_depart"/>
+                        </p>
+                    </div>
+                </t>
+            </template>
+        </kanban>
+    </field>
+</record>
+
+<record id="action_ticket" model="ir.actions.act_window" >
+    <field name="name">Menu ticket </field>
+    <field name="res_model">car.ticket</field>
+    <field name="view_mode">tree,form,kanban</field>
+</record>
+
+
+    <menuitem id="menu_transport" name="Transport"/>
+
+    <menuitem id="menu_ticket" name="ticket" action="action_ticket" parent="menu_transport"/>
+</odoo>

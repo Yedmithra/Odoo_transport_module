@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- vue formulaire -->
+<record id="wizard_view_form" model="ir.ui.view">
+    <field name="name">change_chauffeur</field>
+    <field name="model">change.chauffeur</field>
+    <field name="arch" type="xml">
+        <form>
+            <group>
+            <field name="nouveau_chauffeur"/>
+            </group>
+            <footer>
+            <button string="Change chauffeur" type="object" class="btn-primary"
+                        name="fchange_chauffeur"/>
+                <button string="Cancel" class="btn-primary" special="cancel"/>
+            </footer>
+
+        </form>
+    </field>
+</record>
+<record id="action_change_chauffeur" model="ir.actions.act_window" >
+    <field name="name">Menu change chauffeur </field>
+    <field name="res_model">change.chauffeur</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="wizard_view_form"/>
+    <field name="type">ir.actions.act_window</field>
+    <field name="target">new</field>
+</record>
+</odoo>

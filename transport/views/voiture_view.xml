@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!-- vue liste -->
+<record id="car_view_list" model="ir.ui.view">
+    <field name="name">car.car.list</field>
+    <field name="model">car.car</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="model_voiture"/>
+            <field name="fabricant"/>
+            <field name="nombre_de_place"/>
+            <field name="type_de_carburant"/>
+            <field name="chauffeur_id"/>
+           <!-- <field name="voyage"/> -->
+        </tree>
+    </field>
+</record>
+
+<!-- vue formulaire -->
+<record id="car_view_form" model="ir.ui.view">
+    <field name="name">car.car.form</field>
+    <field name="model">car.car</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button string="Détail Chauffeur" type="object" class="btn-primary"
+                        name="details_chauffeur"/>
+                <button string="Changer Chauffeur" type="action" class="oe_highlight"
+                        name="%(transport.action_change_chauffeur)d"/>
+            </header>
+            <group>
+            <field name="model_voiture"/>
+            <field name="fabricant"/>
+            <field name="nombre_de_place"/>
+            <field name="type_de_carburant"/>
+            <field name="chauffeur_id"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+
+    <!-- vue kanban -->
+<record id="car_view_kanban" model="ir.ui.view">
+    <field name="name">car.car.kanban</field>
+    <field name="model">car.car</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <template>
+                <t t-name="kanban-box">
+                    <div>
+                        <p>model de voiture :
+                        <field name="model_voiture"/>
+                        </p>
+                        <p>fabricant :
+                        <field name="fabricant"/>
+                        </p>
+                        <p>nombre de place
+                        <field name="nombre_de_place"/>
+                        </p>
+                        <p>type de carburant
+                        <field name="type_de_carburant"/>
+                        </p>
+                        <p>chauffeur
+                        <field name="chauffeur_id"/>
+                        </p>
+                    </div>
+                </t>
+            </template>
+        </kanban>
+    </field>
+</record>
+
+
+ <!-- menu pour voir les vues -->
+  <!--   <menuitem id="menu_Voitures" name="Voitures" parent="menu_transport"/> -->
+
+<record id="action_voiture" model="ir.actions.act_window" >
+    <field name="name">Menu voiture  </field>
+    <field name="res_model">car.car</field>
+    <field name="view_mode">tree,form,kanban</field>
+</record>
+
+<menuitem id="menu_voiture" name="voiture" action="action_voiture" parent="menu_transport" />
+</odoo>
